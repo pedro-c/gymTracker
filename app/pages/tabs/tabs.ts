@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ExercicesPage} from '../exercices/exercices';
+import {ExercisesPage} from '../exercises/exercises';
 import {CircuitsPage} from '../circuits/circuits';
 @Component({
   templateUrl: 'build/pages/tabs/tabs.html'
@@ -12,7 +12,7 @@ export class TabsPage {
   constructor() {
     // this tells the tabs component which Pages
     // should be each tab's root Page
-    this.tab1Root = ExercicesPage;
+    this.tab1Root = ExercisesPage;
     this.tab2Root = CircuitsPage;
   }
 }

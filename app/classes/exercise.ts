@@ -1,6 +1,4 @@
-import {ExercicesPage} from '../pages/exercices/exercices';
-
-export class Exercice {
+export class Exercise {
   private lastValue: number;
   private avg: number;
   private name: string;
@@ -13,8 +11,8 @@ export class Exercice {
     this.lastValue = lastValue;
     this.avg = 0;
     this.counter = 0;
-    this.id = Exercice.nextId;
-    Exercice.nextId++;
+    this.id = Exercise.nextId;
+    Exercise.nextId++;
   }
 
   public setLastValue(value: number) {
