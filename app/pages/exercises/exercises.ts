@@ -5,16 +5,14 @@ import {Exercise} from '../../classes/exercise';
 import {ExercisesFactory} from '../../services/exercisesFactory';
 
 @Component({
-  templateUrl: 'build/pages/exercises/exercises.html'
+  templateUrl: 'build/pages/exercises/exercises.html',
+  providers: [ExercisesFactory]
 })
 export class ExercisesPage {
-  private exercises: Exercise[]=[
-    new Exercise('Pesos', 20),
-    new Exercise('Pesos', 20)
-  ];
+  private exercises: Exercise[];
 
   constructor(private navController: NavController, private exercisesFactory: ExercisesFactory) {
-      //this.exercises = this.exercisesFactory.getExercises();
+      this.exercises = this.exercisesFactory.getExercises();
   }
 
   openExerciseDetails(exercise : Exercise) {
