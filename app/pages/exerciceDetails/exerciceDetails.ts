@@ -7,6 +7,7 @@ import {ExercicesPage} from '../exercices/exercices';
 })
 export class ExercicesDetailsPage {
   private exercice : any;
+  
   constructor(private navController : NavController, private navParams : NavParams,
               private e : ExercicesPage) {
      this.exercice = e.getExerciceById(navParams.get('exerciceId'));

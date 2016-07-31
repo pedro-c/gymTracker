@@ -11,14 +11,14 @@ export class ExercicesPage {
 
 
 
-  constructor(private navCtrl: NavController) {
+  constructor(private navController: NavController) {
       this.exercices.push(new Exercice('Pesos', 20));
       this.exercices.push(new Exercice('Pesos', 20));
 
   }
 
   openExerciceDetails(exercice : Exercice) {
-    this.navCtrl.push(ExercicesDetailsPage, {
+    this.navController.push(ExercicesDetailsPage, {
       exerciceId : exercice.getId()
     });
   }
