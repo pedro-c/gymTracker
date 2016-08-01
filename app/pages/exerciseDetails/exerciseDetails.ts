@@ -12,6 +12,6 @@ export class ExercisesDetailsPage {
 
   constructor(private navController : NavController, private navParams : NavParams,
               private exercisesFactory : ExercisesFactory) {
-     this.exercise = exercisesFactory.getExerciseById(navParams.get('exerciceId'));
+     this.exercise = exercisesFactory.getExerciseById(navParams.get('exerciseId'));
   }
 }

@@ -5,23 +5,21 @@
 </ion-header>
 
 <ion-content padding class="home">
-    <ion-form>
-    <ion-list class=" ">
-      <ion-item *ngFor="let exercise of exercises" (click)="openExerciseDetails(exercise)">
+      <ion-card class="exercise" *ngFor="let exercise of exercises" (click)="openExerciseDetails(exercise)">
         <table style="width:100%">
+
           <tr>
             <td align="left"> <font size="3"> {{exercise.getName()}} </font></td>
             <td align="center"> <font size="3"> {{exercise.getAvg()}} </font></td>
             <td align="right"> <font size="3"> {{exercise.getLastValue()}} </font></td>
           </tr>
+
         </table>
-      </ion-item>
-    </ion-list>
+      </ion-card>
 
 
-  </ion-form>
 
-  <button fab-bottom fab-right fab>
+  <button fab-bottom fab-right fab (click)="doPrompt()">
     <ion-icon name="add"></ion-icon>
   </button>
 
