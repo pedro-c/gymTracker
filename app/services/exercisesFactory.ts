@@ -11,12 +11,19 @@ export class ExercisesFactory {
   ];
 
   constructor() {
-
+    
   }
 
-  public getExerciseById(id) {
+  public getExerciseById(id: number) {
     return ExercisesFactory.exercises[id];
-  };
+  }
+
+  public removeExerciseById(id: number){
+    for(var i=0; i<ExercisesFactory.exercises.length; i++){
+        if(ExercisesFactory.exercises[i].getId()==id)
+          ExercisesFactory.exercises.splice(i,1);
+    }
+  }
 
   public getExercises() : Exercise[]{
     return ExercisesFactory.exercises;

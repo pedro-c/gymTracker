@@ -17,6 +17,16 @@ export class ExercisesDetailsPage {
      this.records = exercisesFactory.getExerciseById(navParams.get('exerciseId')).getRecords();
   }
 
+// BUG not deleting properly
+  deleteRecord(record: number){
+      this.records.splice(this.records.indexOf(record),1);
+  }
+
+  deleteExercise(exerciseId: number){
+      this.exercisesFactory.removeExerciseById(exerciseId);
+      this.navController.popToRoot();
+  }
+
   doPrompt() {
     let prompt = Alert.create({
       title: '',

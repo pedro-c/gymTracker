@@ -7,4 +7,24 @@
 </ion-header>
 
 <ion-content padding class="about">
+
+  <ion-card *ngFor="let circuit of circuits" (click)="openCircuitDetails(circuit)">
+    <ion-card-header>
+      {{circuit.name}}
+    </ion-card-header>
+    <ion-card-content>
+      <h3>
+        1
+      </h3>
+      <h3>
+        2
+      </h3>
+      <h3>
+        3
+      </h3>
+
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

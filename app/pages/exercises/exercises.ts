@@ -17,13 +17,16 @@ export class ExercisesPage {
   }
 
   openExerciseDetails(exercise : Exercise) {
+    this.exercises = this.exercisesFactory.getExercises();
     this.navController.push(ExercisesDetailsPage, {
       exerciseId : exercise.getId()
     });
   }
 
   getExerciseById(id: number) : Exercise{
+    this.exercises = this.exercisesFactory.getExercises();
     return this.exercises[id];
+
   }
 
 
