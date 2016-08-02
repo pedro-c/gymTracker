@@ -5,17 +5,34 @@
 </ion-header>
 
 <ion-content padding class="home">
-      <ion-card class="exercise" *ngFor="let exercise of exercises" (click)="openExerciseDetails(exercise)">
-        <table style="width:100%">
+  <ion-card class="exercise" *ngFor="let exercise of exercises" (click)="openExerciseDetails(exercise)">
+    <ion-grid>
+      <ion-row wrap center>
+        <ion-col width-50 class="title">{{exercise.getName()}}</ion-col>
 
-          <tr>
-            <td align="left"> <font size="3"> {{exercise.getName()}} </font></td>
-            <td align="center"> <font size="3"> {{exercise.getAvg()}} </font></td>
-            <td align="right"> <font size="3"> {{exercise.getLastValue()}} </font></td>
-          </tr>
+        <ion-col width-100 >
+          <ion-row wrap center>
+            <ion-col class="records-label">
+              Average
+            </ion-col>
+            <ion-col class="records">
+              {{exercise.getAvg()}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="records-label">
+              Last time
+            </ion-col>
+            <ion-col class="records">
+              {{exercise.getLastRecord()}}
+            </ion-col>
+          </ion-row>
 
-        </table>
-      </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 
 
 

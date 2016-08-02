@@ -3,11 +3,11 @@ import {Exercise} from '../classes/exercise';
 
 @Injectable()
 export class ExercisesFactory {
-  private exercises: Exercise[]=[
-    new Exercise('Pesos1', 20),
-    new Exercise('Pesos2', 20),
-    new Exercise('Pesos3', 20),
-    new Exercise('Pesos4', 20)
+  private static exercises: Exercise[]=[
+    new Exercise('Pesos1', 0),
+    new Exercise('Pesos2', 0),
+    new Exercise('Pesos3', 0),
+    new Exercise('Pesos4', 0)
   ];
 
   constructor() {
@@ -15,15 +15,15 @@ export class ExercisesFactory {
   }
 
   public getExerciseById(id) {
-    return this.exercises[id];
+    return ExercisesFactory.exercises[id];
   };
 
   public getExercises() : Exercise[]{
-    return this.exercises;
+    return ExercisesFactory.exercises;
   }
 
   public addExercise(name: string){
-    this.exercises.push(new Exercise(name, 0));
+    ExercisesFactory.exercises.push(new Exercise(name, 0));
   }
 
 

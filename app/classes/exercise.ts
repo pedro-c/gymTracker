@@ -5,27 +5,41 @@ export class Exercise {
   private counter: number;
   private id: number;
   private static nextId: number = 0;
+  private records: number[]=[0,0,1,2,3];
 
   constructor(name: string, lastValue: number) {
     this.name = name;
     this.lastValue = lastValue;
-    this.avg = 0;
-    this.counter = 0;
+    this.avg = this.calcAvg();
     this.id = Exercise.nextId;
     Exercise.nextId++;
   }
 
   public setLastValue(value: number) {
     this.lastValue = value;
-    this.counter++;
-    this.avg = (this.avg * (this.counter - 1) + value) / this.counter;
+    this.records.push(value);
+    this.avg = this.calcAvg();
+  }
+
+  public calcAvg(): number{
+
+    var count=0;
+    for (var i=0; i<this.records.length;i++){
+      console.log(this.records[i]);
+      count+=parseInt( this.records[i].toString(), 10 );
+    }
+    var avg=(count/this.records.length);
+    console.log(count);
+    console.log(this.records.length);
+    console.log(avg);
+    return Math.round(avg);
   }
 
   public getId(): number {
     return this.id;
   }
 
-  public getLastValue(): number {
+  public getLastRecord(): number {
     return this.lastValue;
   }
 
@@ -35,6 +49,10 @@ export class Exercise {
 
   public getName(): string {
     return this.name;
+  }
+
+  public getRecords(): number[]{
+    return this.records;
   }
 
 

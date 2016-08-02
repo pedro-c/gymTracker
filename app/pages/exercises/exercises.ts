@@ -17,7 +17,6 @@ export class ExercisesPage {
   }
 
   openExerciseDetails(exercise : Exercise) {
-    this.exercises = this.exercisesFactory.getExercises();
     this.navController.push(ExercisesDetailsPage, {
       exerciseId : exercise.getId()
     });
@@ -48,8 +47,7 @@ export class ExercisesPage {
         {
           text: 'Save',
           handler: data => {
-            //TODO fix id problem
-            this.exercisesFactory.addExercise(data.exerciseName);
+            this.exercises.push(new Exercise(data.exerciseName,0));
           }
         }
       ]

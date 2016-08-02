@@ -6,13 +6,22 @@
 
 <ion-content padding class="home">
 
-  <ion-card>
-    <ion-card-header class="title">
-      Previous Records
-    </ion-card-header>
-    <ion-card-content>
-      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-    </ion-card-content>
-  </ion-card>
+  <button block (click)="doPrompt()">
+    New Record
+  </button>
+
+  <ion-list class="records">
+    <ion-item-sliding>
+        <ion-item *ngFor="let record of records">{{record}}</ion-item>
+        <ion-item-options>
+        <button primary>
+          <ion-icon name="trash"></ion-icon>
+
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- TODO: add infinite list -->
 
 </ion-content>
