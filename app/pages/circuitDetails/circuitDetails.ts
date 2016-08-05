@@ -3,31 +3,55 @@ import {Alert, NavController, NavParams} from 'ionic-angular';
 import {Exercise} from '../../classes/exercise';
 import {CircuitsPage} from '../circuits/circuits';
 import {CircuitsFactory} from '../../services/circuitsFactory';
+import {ExercisesFactory} from '../../services/exercisesFactory';
+import {ExercisesDetailsPage} from '../exerciseDetails/exerciseDetails';
+
 
 @Component({
   templateUrl: 'build/pages/circuitDetails/circuitDetails.html',
-  providers: [CircuitsFactory]
+  providers: [CircuitsFactory, ExercisesFactory]
 })
 export class CircuitsDetailsPage {
   private circuit : any;
-  private exercises: Exercise[]=[];
+  private exercises: string[]=[];
 
   constructor(private navController : NavController, private navParams : NavParams,
-              private circuitsFactory : CircuitsFactory) {
+              private circuitsFactory : CircuitsFactory, private exercisesFactory : ExercisesFactory) {
      this.circuit = circuitsFactory.getCircuitById(navParams.get('circuitId'));
      this.exercises = circuitsFactory.getCircuitById(navParams.get('circuitId')).getExercises();
   }
 
-  deleteExercise(exerciseId: number){
+  deleteExercise(exerciseName: string){
       for(var i=0; i<this.exercises.length;i++){
-        if(exerciseId=this.exercises[i].getId())
+        if(exerciseName=this.exercises[i])
           this.exercises.splice(i,1);
       }
   }
 
-  deletecircuit(circuitId: number){
+  deleteCircuit(circuitId: number){
       this.circuitsFactory.removeCircuitById(circuitId);
       this.navController.popToRoot();
+  }
+
+  openExerciseDetails(exerciseName : string) {
+    var exerciseId=0;
+    for(var i=0; i<this.exercisesFactory.getExercises().length;i++){
+      if(this.exercisesFactory.getExercises()[i].getName()==exerciseName)
+      this.navController.push(ExercisesDetailsPage, { exerciseId
+      });
+    }
+
+  }
+  addExercise(exerciseName: string){
+    var foundExercise=0;
+    for(var i=0; i<this.exercisesFactory.getExercises().length;i++){
+        if(this.exercisesFactory.getExercises()[i].getName()==exerciseName)
+          foundExercise=1;
+    }
+    if(foundExercise==0){
+      this.exercisesFactory.addExercise(exerciseName);
+    }
+    this.exercises.push(exerciseName);
   }
 
   doPrompt() {
@@ -36,8 +60,8 @@ export class CircuitsDetailsPage {
       message: "",
       inputs: [
         {
-          type: 'number',
-          name: 'record',
+          type: 'string',
+          name: 'exerciseName',
           placeholder: ''
         },
       ],
@@ -51,7 +75,7 @@ export class CircuitsDetailsPage {
         {
           text: 'Save',
           handler: data => {
-            this.circuit.setLastValue(data.record);
+            this.circuit.addExercise(data.exerciseName);
           }
         }
       ]

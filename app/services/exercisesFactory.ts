@@ -11,9 +11,18 @@ export class ExercisesFactory {
   ];
 
   constructor() {
-    
+
   }
 
+  public getExercises() : Exercise[]{
+    return ExercisesFactory.exercises;
+  }
+
+
+    public addExercise(name: string){
+      ExercisesFactory.exercises.push(new Exercise(name, 0));
+    }
+    
   public getExerciseById(id: number) {
     return ExercisesFactory.exercises[id];
   }
@@ -25,13 +34,8 @@ export class ExercisesFactory {
     }
   }
 
-  public getExercises() : Exercise[]{
-    return ExercisesFactory.exercises;
-  }
 
-  public addExercise(name: string){
-    ExercisesFactory.exercises.push(new Exercise(name, 0));
-  }
+
 
 
 }

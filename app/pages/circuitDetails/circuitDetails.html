@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{exercise.name}}</ion-title>
+    <ion-title>{{circuit.name}}</ion-title>
 
     <ion-buttons end>
-      <button danger (click)="deleteExercise(exercise.id)">
+      <button danger (click)="deleteCircuit(circuit.id)">
         <ion-icon name="trash"></ion-icon>
       </button>
     </ion-buttons>
@@ -15,18 +15,14 @@
 <ion-content padding class="home">
 
   <button block (click)="doPrompt()">
-    New Record
+    Add Exercise
   </button>
 
-  <h1>
-  Last Records
-  </h1>
-
   <ion-list>
-    <ion-item-sliding *ngFor="let record of records">
-      <ion-item>{{record}}</ion-item>
+    <ion-item-sliding *ngFor="let exercise of exercises" (click)="openExerciseDetails(exercise)">
+      <ion-item>{{exercise}}</ion-item>
       <ion-item-options>
-        <button primary (click)="deleteRecord(record)">
+        <button primary (click)="deleteExercise(exercise)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

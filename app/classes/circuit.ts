@@ -4,7 +4,7 @@ export class Circuit {
   private name: string;
   private id: number;
   private static nextId: number = 0;
-  private exercises: Exercise[]=[];
+  private exercises: string[]=[];
 
   constructor(name: string) {
     this.name = name;
@@ -20,8 +20,15 @@ export class Circuit {
     return this.name;
   }
 
-  public getExercises(): Exercise[]{
+  public getExercises(): string[]{
     return this.exercises;
   }
 
+  public getExerciseName(i: number): string{
+    return this.exercises[i];
+  }
+
+  public addExercise(exerciseName: string){
+    this.exercises.push(exerciseName);
+  }
 }

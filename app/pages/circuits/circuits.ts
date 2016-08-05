@@ -24,7 +24,10 @@ export class CircuitsPage {
     });
   }
 
-
+  //TODO update deleted exercises in the ciruits details view into circuits
+  ionViewWillEnter() : void {
+      this.circuits = this.circuitsFactory.getCircuits();
+  }
 
   doPrompt() {
     let prompt = Alert.create({
@@ -33,7 +36,7 @@ export class CircuitsPage {
       inputs: [
         {
           name: 'circuitName',
-          placeholder: 'Exercise Name'
+          placeholder: 'Circuit Name'
         },
       ],
       buttons: [
