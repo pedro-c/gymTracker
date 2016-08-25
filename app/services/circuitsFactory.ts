@@ -27,6 +27,16 @@ export class CircuitsFactory {
     }
   }
 
+  public removeExerciseFromCircuits(name: string){
+    for(var i=0; i<CircuitsFactory.circuits.length; i++){
+        for(var j=0; j<CircuitsFactory.circuits[i].getExercises().length;j++){
+          if(CircuitsFactory.circuits[i].getExercises()[j]==name){
+              CircuitsFactory.circuits[i].removeExercise(name);
+          }
+        }
+
+      }
+    }
 
 
 }

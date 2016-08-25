@@ -22,15 +22,19 @@ export class ExercisesFactory {
     public addExercise(name: string){
       ExercisesFactory.exercises.push(new Exercise(name, 0));
     }
-    
+
   public getExerciseById(id: number) {
-    return ExercisesFactory.exercises[id];
+    for(var i=0; i<ExercisesFactory.exercises.length; i++){
+        if(ExercisesFactory.exercises[i].getId()==id)
+          return ExercisesFactory.exercises[i];
+    }
   }
 
   public removeExerciseById(id: number){
     for(var i=0; i<ExercisesFactory.exercises.length; i++){
         if(ExercisesFactory.exercises[i].getId()==id)
-          ExercisesFactory.exercises.splice(i,1);
+            ExercisesFactory.exercises.splice(i,1);
+
     }
   }
 

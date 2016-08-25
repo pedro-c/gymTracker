@@ -25,8 +25,10 @@ export class ExercisesPage {
 
   getExerciseById(id: number) : Exercise{
     this.exercises = this.exercisesFactory.getExercises();
-    return this.exercises[id];
-
+    for(var i =0; i<this.exercises.length;i++){
+      if(this.exercises[i].getId()==id)
+        return this.exercises[i];
+    }
   }
 
 

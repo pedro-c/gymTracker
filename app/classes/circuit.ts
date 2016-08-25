@@ -31,4 +31,13 @@ export class Circuit {
   public addExercise(exerciseName: string){
     this.exercises.push(exerciseName);
   }
+
+  public removeExercise(exerciseName: string){
+    for(var i=0; i<this.exercises.length;i++){
+      if(this.exercises[i]==exerciseName)
+        this.exercises.splice(i,1);
+    }
+  }
+
+
 }

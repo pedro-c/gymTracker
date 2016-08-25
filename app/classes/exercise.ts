@@ -25,13 +25,9 @@ export class Exercise {
 
     var count=0;
     for (var i=0; i<this.records.length;i++){
-      console.log(this.records[i]);
       count+=parseInt( this.records[i].toString(), 10 );
     }
     var avg=(count/this.records.length);
-    console.log(count);
-    console.log(this.records.length);
-    console.log(avg);
     return Math.round(avg);
   }
 

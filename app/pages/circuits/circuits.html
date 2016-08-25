@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="about" *ngIf="circuits.length > 0" >
+<ion-content padding class="about" >
       <ion-card *ngFor="let circuit of circuits" (click)="openCircuitDetails(circuit)">
         <ion-card-header>
           {{circuit.getName()}}
