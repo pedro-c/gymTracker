@@ -43,15 +43,37 @@ export class CircuitsDetailsPage {
 
   }
   addExercise(exerciseName: string){
+    console.log('2');
     var foundExercise=0;
+    var repeatedExercise=0;
     for(var i=0; i<this.exercisesFactory.getExercises().length;i++){
         if(this.exercisesFactory.getExercises()[i].getName()==exerciseName)
           foundExercise=1;
     }
-    if(foundExercise==0){
-      this.exercisesFactory.addExercise(exerciseName);
+    for(var j=0; j<this.exercises.length;j++){
+      if(this.exercises[j]==exerciseName){
+        repeatedExercise=1;
+/*
+        let alert = Alert.create({
+          title: 'Exercise with the same name!',
+          subTitle: '',
+          buttons: [{
+            text: 'OK',
+            handler: data => {
+            }
+          }]
+        });
+        this.navController.present(alert);
+*/
+// TODO: Fix alert
+      }
     }
-    this.exercises.push(exerciseName);
+    if(repeatedExercise==0){
+      this.exercises.push(exerciseName);
+      if(foundExercise==0){
+        this.exercisesFactory.addExercise(exerciseName);
+      }
+    }
   }
 
   doPrompt() {
@@ -75,7 +97,7 @@ export class CircuitsDetailsPage {
         {
           text: 'Save',
           handler: data => {
-            this.circuit.addExercise(data.exerciseName);
+            this.addExercise(data.exerciseName);
           }
         }
       ]

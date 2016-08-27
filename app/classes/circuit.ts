@@ -28,9 +28,7 @@ export class Circuit {
     return this.exercises[i];
   }
 
-  public addExercise(exerciseName: string){
-    this.exercises.push(exerciseName);
-  }
+
 
   public removeExercise(exerciseName: string){
     for(var i=0; i<this.exercises.length;i++){
