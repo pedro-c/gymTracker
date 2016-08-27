@@ -34,11 +34,12 @@ export class CircuitsDetailsPage {
   }
 
   openExerciseDetails(exerciseName : string) {
-    var exerciseId=0;
     for(var i=0; i<this.exercisesFactory.getExercises().length;i++){
-      if(this.exercisesFactory.getExercises()[i].getName()==exerciseName)
-      this.navController.push(ExercisesDetailsPage, { exerciseId
-      });
+      if(this.exercisesFactory.getExercises()[i].getName()==exerciseName){
+        var exerciseId=this.exercisesFactory.getExercises()[i].getId();
+        this.navController.push(ExercisesDetailsPage, { exerciseId });
+      }
+
     }
 
   }

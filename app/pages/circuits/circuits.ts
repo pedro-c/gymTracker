@@ -29,6 +29,7 @@ export class CircuitsPage {
       this.circuits = this.circuitsFactory.getCircuits();
   }
 
+
   doPrompt() {
     let prompt = Alert.create({
       title: 'New Circuit',
@@ -49,7 +50,7 @@ export class CircuitsPage {
         {
           text: 'Save',
           handler: data => {
-            this.circuits.push(new Circuit(data.circuitName));
+          this.circuitsFactory.addCircuit(data.circuitName);
           }
         }
       ]

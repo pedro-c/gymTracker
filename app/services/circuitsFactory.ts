@@ -27,9 +27,21 @@ export class CircuitsFactory {
     }
   }
 
-  public removeExerciseFromCircuits(name: string){
+  public addCircuit(circuitName: string){
+    var repeated=0;
     for(var i=0; i<CircuitsFactory.circuits.length; i++){
-        for(var j=0; j<CircuitsFactory.circuits[i].getExercises().length;j++){
+        if(CircuitsFactory.circuits[i].getName()==circuitName)
+          repeated=1;
+    }
+    if(repeated==0){
+      CircuitsFactory.circuits.push(new Circuit(circuitName));
+    }
+  }
+
+  public removeExerciseFromCircuits(name: string){
+    console.log(name);
+    for(var i=0; i<CircuitsFactory.circuits.length; i++){
+        for(var j=0; j<CircuitsFactory.circuits[j].getExercises().length;j++){
           if(CircuitsFactory.circuits[i].getExercises()[j]==name){
               CircuitsFactory.circuits[i].removeExercise(name);
           }

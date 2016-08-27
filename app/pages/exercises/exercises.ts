@@ -32,6 +32,8 @@ export class ExercisesPage {
   }
 
 
+
+
   doPrompt() {
     let prompt = Alert.create({
       title: 'New Exercise',
@@ -52,7 +54,7 @@ export class ExercisesPage {
         {
           text: 'Save',
           handler: data => {
-            this.exercises.push(new Exercise(data.exerciseName,0));
+            this.exercisesFactory.addExercise(data.exerciseName);
           }
         }
       ]

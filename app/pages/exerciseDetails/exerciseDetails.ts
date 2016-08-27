@@ -24,12 +24,12 @@ export class ExercisesDetailsPage {
   }
 
   deleteExercise(exerciseId: number){
-      this.exercisesFactory.removeExerciseById(exerciseId);
-      for(var i=0; i<this.exercisesFactory.getExercises.length;i++){
-        if(this.exercisesFactory.getExercises[i]==exerciseId){
-            this.circuitsFactory.removeExerciseFromCircuits(this.exercisesFactory.getExercises[i].getName());
+      for(var i=0; i<this.exercisesFactory.getExercises().length;i++){
+        if(this.exercisesFactory.getExercises()[i].getId()==exerciseId){
+            this.circuitsFactory.removeExerciseFromCircuits(this.exercisesFactory.getExercises()[i].getName());
         }
       }
+      this.exercisesFactory.removeExerciseById(exerciseId);
       this.navController.popToRoot();
   }
 

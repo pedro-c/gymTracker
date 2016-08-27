@@ -20,7 +20,15 @@ export class ExercisesFactory {
 
 
     public addExercise(name: string){
-      ExercisesFactory.exercises.push(new Exercise(name, 0));
+      var repeated=0;
+      for(var i=0; i<ExercisesFactory.exercises.length; i++){
+        if(ExercisesFactory.exercises[i].getName() == name){
+          repeated=1;
+        }
+      }
+      if(repeated==0){
+        ExercisesFactory.exercises.push(new Exercise(name, 0));
+      }
     }
 
   public getExerciseById(id: number) {
